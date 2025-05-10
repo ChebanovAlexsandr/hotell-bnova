@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","","Get_accounts","0","0","3","0","0"
+"","","Get_plans","0","0","3","1","0"
+"","","Get_roomtypes","0","0","4","1","0"
+"","Accounts API","Get hotel metadata","0","0","3","0","0"
+"","RoomTypes API","Get room categories","0","0","4","0","0"
+"","Plans API","Get tariff plans","0","0","3","1","0"
