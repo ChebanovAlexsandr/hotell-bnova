@@ -28,55 +28,45 @@ jobs:
         python-version: '3.11'
 
     - name: Install system dependencies
-      run: sudo apt-get install -y unzip
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y unzip
 
-    - name: Install Python dependencies
+    - name: Install Python packages
       run: |
         pip install -r requirements.txt
-        pip install allure-pytest
+        pip install allure-pytest==2.13.5 allure-python-commons==2.13.5
 
-    - name: Run pytest with Allure
+    - name: Run tests with Allure
       run: pytest --alluredir=./reports/allure-results --verbose
 
     - name: Install Allure CLI
       run: |
-        wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.27.0/allure-commandline-2.27.0.zip
-        unzip allure-commandline-2.27.0.zip -d allure-commandline
+        wget -q https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.27.0/allure-commandline-2.27.0.zip
+        unzip -q allure-commandline-2.27.0.zip -d allure-commandline
         echo "$(pwd)/allure-commandline/allure-2.27.0/bin" >> $GITHUB_PATH
 
-    - name: Generate Allure report
+    - name: Generate HTML report
       run: |
         mkdir -p ./reports/html
         allure generate ./reports/allure-results -o ./reports/html --clean
 
-    - name: Verify report generation
+    - name: Validate report
       run: |
-        [ -f ./reports/html/index.html ] || exit 1
-        echo "Report generated successfully"
+        [ -f ./reports/html/index.html ] || (echo "Report file missing!" && exit 1)
+
+    - name: Configure Git
+      run: |
+        git config --global --add safe.directory /github/workspace
+        git config user.name "GitHub Actions"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        deploy_key: ${{ secrets.DEPLOY_KEY }}
         publish_dir: ./reports/html
         publish_branch: gh-pages
         force_orphan: true
-        user_name: "GitHub Actions"
-        user_email: "41898282+github-actions[bot]@users.noreply.github.com"
-
-    - name: Add report link to PR
-      if: ${{ github.event_name == 'pull_request' }}
-      uses: actions/github-script@v6
-      with:
-        script: |
-          try {
-            const reportUrl = `https://${context.repo.owner}.github.io/${context.repo.repo}/`
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `📊 **Allure Report**: ${reportUrl}\n_Деплой может занять до 2 минут_`
-            })
-          } catch (error) {
-            core.error("Ошибка при создании комментария: " + error.message)
-          }
+        keep_files: false
+        allow_empty_commit: false
