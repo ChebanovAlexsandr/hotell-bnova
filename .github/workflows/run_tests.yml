@@ -1,1 +1,68 @@
+name: Run Tests with Allure Reports
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test_and_report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+      pull-requests: write  # Разрешение на комментирование PR
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run tests with Allure
+      run: pytest --alluredir=./reports/allure-reports --verbose
+
+    - name: Install Allure CLI
+      run: |
+        sudo apt-get install unzip
+        wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.20.1/allure-commandline-2.20.1.zip
+        unzip allure-commandline-2.20.1.zip -d allure-commandline
+        echo "$(pwd)/allure-commandline/allure-2.20.1/bin" >> $GITHUB_PATH
+
+    - name: Generate HTML report
+      run: |
+        mkdir -p ./reports/html
+        allure generate ./reports/allure-reports -o ./reports/html --clean
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        publish_dir: ./reports/html
+        force_orphan: true
+
+    - name: Add report link to PR
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: actions/github-script@v6
+      with:
+        script: |
+          try {
+            const pagesUrl = `https://${context.repo.owner}.github.io/${context.repo.repo}/`
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `📊 **Allure Report Preview**: ${pagesUrl}\n_Может потребоваться несколько минут для деплоя_`
+            })
+          } catch (error) {
+            core.error("Failed to add comment: " + error.message)
+          }
