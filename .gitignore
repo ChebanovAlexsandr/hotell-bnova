@@ -3,3 +3,4 @@ vene
 __pycache__/
 .idea/
 allure_results
+allure-report
