@@ -25,3 +25,5 @@ project/
 Запуск отчетов allure 
 pytest --alluredir=allure_results
 allure serve allure_results
+
+## Добавлен github actions с просмотром отчетов Allure на вкадке Actions
