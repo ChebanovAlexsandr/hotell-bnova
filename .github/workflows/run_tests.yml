@@ -64,9 +64,7 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: ${{ secrets.DEPLOY_KEY }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # Используем встроенный токен
         publish_dir: ./reports/html
         publish_branch: gh-pages
         force_orphan: true
-        keep_files: false
-        allow_empty_commit: false
