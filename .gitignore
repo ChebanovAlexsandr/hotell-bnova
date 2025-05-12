@@ -4,3 +4,4 @@ __pycache__/
 .idea/
 allure_results
 allure-report
+test_get.py
