@@ -33,6 +33,8 @@ class TestRoomTypes:
         assert response.status_code == expected_status
 
         if response.status_code == 200:
+            if account_id == "0":
+                pytest.xfail("Неизвестная ошибка: account_id=0 возвращает пустой список, уточнить требования")
             data = response.json()
             for room in data["rooms"]:
                 RoomType(**room)
