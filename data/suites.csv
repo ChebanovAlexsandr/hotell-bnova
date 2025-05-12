@@ -1,0 +1,142 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon May 12 13:55:10 UTC 2025","Mon May 12 13:55:11 UTC 2025","584","tests","test_plans","TestPlans","","","test_get_plans[-406]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Тарифах test_get_plans:
+        * Проверка, что тарифы содержат: id, name, description;
+        * Проверка на корректные данные о предоплате (booking_guarantee_sum,booking_guarantee_unit);
+        * Проверка полей правила отмены (cancellation_rules,cancellation_deadline)   
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали 0 account_id.
+          "
+"passed","Mon May 12 13:55:06 UTC 2025","Mon May 12 13:55:08 UTC 2025","1916","tests","test_accounts","TestAccounts","","","test_get_accounts[uid=d7494710-8c8c-4c4c-bba4-f71caf96fece-200]","
+    Этот набор тестов которые  проверяют:
+    1.1. Получение мета-информации об отеле test_get_accounts:
+        Проверки:
+        * Проверка, что возвращаются корректные данные отеля (название, адрес, контакты);
+        * Проверка поля hotel_type (должен содержать допустимые значения: hotel,apartments и т.д.).
+        Входные данные:
+        * Корректный uid;
+        * Некорректный uid; 
+        * Пустой uid.
+        "
+"passed","Mon May 12 13:55:15 UTC 2025","Mon May 12 13:55:16 UTC 2025","1107","tests","test_roomtypes","TestRoomTypes","","","test_get_roomtypes[-1-404]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Категории номеров test_get_roomtypes:
+        Проверки:
+        * Проверка, что для каждой категории номеров возвращаются: id, name, description;
+        * Корректные данные о вместимости: adults, children;
+        * Список фотографий (если photos не null);
+        * Проверка локализации (name_ru,name_en и т.д.).
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали account_id 0;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали неверный формат account_id.
+          "
+"skipped","Mon May 12 13:55:13 UTC 2025","Mon May 12 13:55:14 UTC 2025","952","tests","test_roomtypes","TestRoomTypes","","","test_get_roomtypes[0-200]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Категории номеров test_get_roomtypes:
+        Проверки:
+        * Проверка, что для каждой категории номеров возвращаются: id, name, description;
+        * Корректные данные о вместимости: adults, children;
+        * Список фотографий (если photos не null);
+        * Проверка локализации (name_ru,name_en и т.д.).
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали account_id 0;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали неверный формат account_id.
+          "
+"passed","Mon May 12 13:55:08 UTC 2025","Mon May 12 13:55:09 UTC 2025","740","tests","test_accounts","TestAccounts","","","test_get_accounts[uid=d7494710-8c8c-4c4c-bba4-f71caf96fec-404]","
+    Этот набор тестов которые  проверяют:
+    1.1. Получение мета-информации об отеле test_get_accounts:
+        Проверки:
+        * Проверка, что возвращаются корректные данные отеля (название, адрес, контакты);
+        * Проверка поля hotel_type (должен содержать допустимые значения: hotel,apartments и т.д.).
+        Входные данные:
+        * Корректный uid;
+        * Некорректный uid; 
+        * Пустой uid.
+        "
+"passed","Mon May 12 13:55:12 UTC 2025","Mon May 12 13:55:13 UTC 2025","897","tests","test_plans","TestPlans","","","test_get_plans[0-500]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Тарифах test_get_plans:
+        * Проверка, что тарифы содержат: id, name, description;
+        * Проверка на корректные данные о предоплате (booking_guarantee_sum,booking_guarantee_unit);
+        * Проверка полей правила отмены (cancellation_rules,cancellation_deadline)   
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали 0 account_id.
+          "
+"passed","Mon May 12 13:55:13 UTC 2025","Mon May 12 13:55:13 UTC 2025","596","tests","test_roomtypes","TestRoomTypes","","","test_get_roomtypes[535-200]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Категории номеров test_get_roomtypes:
+        Проверки:
+        * Проверка, что для каждой категории номеров возвращаются: id, name, description;
+        * Корректные данные о вместимости: adults, children;
+        * Список фотографий (если photos не null);
+        * Проверка локализации (name_ru,name_en и т.д.).
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали account_id 0;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали неверный формат account_id.
+          "
+"passed","Mon May 12 13:55:09 UTC 2025","Mon May 12 13:55:09 UTC 2025","607","tests","test_accounts","TestAccounts","","","test_get_accounts[-406]","
+    Этот набор тестов которые  проверяют:
+    1.1. Получение мета-информации об отеле test_get_accounts:
+        Проверки:
+        * Проверка, что возвращаются корректные данные отеля (название, адрес, контакты);
+        * Проверка поля hotel_type (должен содержать допустимые значения: hotel,apartments и т.д.).
+        Входные данные:
+        * Корректный uid;
+        * Некорректный uid; 
+        * Пустой uid.
+        "
+"passed","Mon May 12 13:55:11 UTC 2025","Mon May 12 13:55:12 UTC 2025","1124","tests","test_plans","TestPlans","","","test_get_plans[-1-404]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Тарифах test_get_plans:
+        * Проверка, что тарифы содержат: id, name, description;
+        * Проверка на корректные данные о предоплате (booking_guarantee_sum,booking_guarantee_unit);
+        * Проверка полей правила отмены (cancellation_rules,cancellation_deadline)   
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали 0 account_id.
+          "
+"passed","Mon May 12 13:55:14 UTC 2025","Mon May 12 13:55:15 UTC 2025","1143","tests","test_roomtypes","TestRoomTypes","","","test_get_roomtypes[-406]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Категории номеров test_get_roomtypes:
+        Проверки:
+        * Проверка, что для каждой категории номеров возвращаются: id, name, description;
+        * Корректные данные о вместимости: adults, children;
+        * Список фотографий (если photos не null);
+        * Проверка локализации (name_ru,name_en и т.д.).
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали account_id 0;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали неверный формат account_id.
+          "
+"skipped","Mon May 12 13:55:09 UTC 2025","Mon May 12 13:55:10 UTC 2025","595","tests","test_plans","TestPlans","","","test_get_plans[535-200]","
+    Этот набор тестов которые  проверяют:
+    1.1 Получение информации о Тарифах test_get_plans:
+        * Проверка, что тарифы содержат: id, name, description;
+        * Проверка на корректные данные о предоплате (booking_guarantee_sum,booking_guarantee_unit);
+        * Проверка полей правила отмены (cancellation_rules,cancellation_deadline)   
+        Входные данные:
+        * Передали валидный account_id;
+        * Передали пустой account_id;
+        * Передали несуществующий account_id;
+        * Передали 0 account_id.
+          "
